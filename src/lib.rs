@@ -6,6 +6,11 @@
 //!
 //! [`cortex-m-semihosting`]: https://crates.io/crates/cortex-m-semihosting
 //!
+//! # Requirements
+//!
+//! To build this crate on the stable or beta channels `arm-none-eabi-gcc` needs to be installed and
+//! available in `$PATH`.
+//!
 //! # Usage
 //!
 //! ``` ignore
@@ -32,6 +37,19 @@
 //! (..)
 //! panicked at 'FOO', src/main.rs:6:5
 //! ```
+//!
+//! # Optional features
+//!
+//! ## `inline-asm`
+//!
+//! When this feature is enabled semihosting is implemented using inline assembly (`asm!`) and
+//! compiling this crate requires nightly.
+//!
+//! When this feature is disabled semihosting is implemented using FFI calls into an external
+//! assembly file and compiling this crate works on stable and beta.
+//!
+//! Apart from the toolchain requirement, enabling `inline-asm` removes the requirement of having
+//! `arm-none-eabi-gcc` installed on the host.
 
 #![deny(missing_docs)]
 #![deny(warnings)]
