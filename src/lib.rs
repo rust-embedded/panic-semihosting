@@ -1,8 +1,11 @@
 //! Report panic messages to the host stderr using semihosting
 //!
 //! This crate contains an implementation of `panic_fmt` that logs panic messages to the host stderr
-//! using [`cortex-m-semihosting`]. Currently, this crate only supports the ARM Cortex-M
-//! architecture.
+//! using [`cortex-m-semihosting`]. Before logging the message the panic handler disables (masks)
+//! the device specific interrupts. After logging the message the panic handler trigger a breakpoint
+//! and then goes into an infinite loop.
+//!
+//! Currently, this crate only supports the ARM Cortex-M architecture.
 //!
 //! [`cortex-m-semihosting`]: https://crates.io/crates/cortex-m-semihosting
 //!
