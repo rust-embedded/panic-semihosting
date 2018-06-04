@@ -56,34 +56,24 @@
 
 #![deny(missing_docs)]
 #![deny(warnings)]
-#![feature(lang_items)]
+#![feature(panic_implementation)]
 #![no_std]
 
 extern crate cortex_m;
 extern crate cortex_m_semihosting as sh;
 
-use core::fmt::{self, Write};
-use cortex_m::{asm, interrupt};
+use core::fmt::Write;
+use core::panic::PanicInfo;
 
+use cortex_m::{asm, interrupt};
 use sh::hio;
 
-#[lang = "panic_fmt"]
-unsafe extern "C" fn panic_fmt(
-    args: core::fmt::Arguments,
-    file: &'static str,
-    line: u32,
-    col: u32,
-) -> ! {
+#[panic_implementation]
+fn panic(info: &PanicInfo) -> ! {
     interrupt::disable();
 
     if let Ok(mut hstdout) = hio::hstdout() {
-        (|| -> Result<(), fmt::Error> {
-            hstdout.write_str("panicked at '")?;
-            hstdout.write_fmt(args)?;
-            hstdout.write_str("', ")?;
-            hstdout.write_str(file)?;
-            writeln!(hstdout, ":{}:{}", line, col)
-        })().ok();
+        writeln!(hstdout, "{}", info).ok();
     }
 
     // OK to fire a breakpoint here because we know the microcontroller is connected to a debugger

@@ -6,7 +6,7 @@ keywords = ["panic-impl", "panic", "semihosting"]
 license = "MIT OR Apache-2.0"
 name = "panic-semihosting"
 repository = "https://github.com/japaric/panic-semihosting"
-version = "0.2.0"
+version = "0.3.0"
 
 [dependencies]
 cortex-m = "0.5.0"
