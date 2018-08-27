@@ -2,15 +2,16 @@
 authors = ["Jorge Aparicio <jorge@japaric.io>"]
 categories = ["no-std"]
 description = "Report panic messages to the host stderr using semihosting"
+documentation = "https://rust-embedded.github.io/panic-semihosting/panic_semihosting"
 keywords = ["panic-impl", "panic", "semihosting"]
 license = "MIT OR Apache-2.0"
 name = "panic-semihosting"
-repository = "https://github.com/japaric/panic-semihosting"
-version = "0.3.0"
+repository = "https://github.com/rust-embedded/panic-semihosting"
+version = "0.3.1"
 
 [dependencies]
-cortex-m = "0.5.0"
-cortex-m-semihosting= "0.3.0"
+cortex-m = "0.5.6"
+cortex-m-semihosting= "0.3.1"
 
 [features]
 inline-asm = ["cortex-m-semihosting/inline-asm", "cortex-m/inline-asm"]
