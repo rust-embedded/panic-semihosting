@@ -7,7 +7,7 @@ keywords = ["panic-impl", "panic", "semihosting"]
 license = "MIT OR Apache-2.0"
 name = "panic-semihosting"
 repository = "https://github.com/rust-embedded/panic-semihosting"
-version = "0.3.1"
+version = "0.4.0"
 
 [dependencies]
 cortex-m = "0.5.6"
