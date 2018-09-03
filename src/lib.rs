@@ -9,11 +9,6 @@
 //!
 //! [`cortex-m-semihosting`]: https://crates.io/crates/cortex-m-semihosting
 //!
-//! # Requirements
-//!
-//! To build this crate on the stable or beta channels `arm-none-eabi-gcc` needs to be installed and
-//! available in `$PATH`.
-//!
 //! # Usage
 //!
 //! ``` ignore
@@ -50,13 +45,10 @@
 //!
 //! When this feature is disabled semihosting is implemented using FFI calls into an external
 //! assembly file and compiling this crate works on stable and beta.
-//!
-//! Apart from the toolchain requirement, enabling `inline-asm` removes the requirement of having
-//! `arm-none-eabi-gcc` installed on the host.
 
 #![deny(missing_docs)]
 #![deny(warnings)]
-#![feature(panic_implementation)]
+#![feature(panic_handler)]
 #![no_std]
 
 extern crate cortex_m;
@@ -68,7 +60,7 @@ use core::panic::PanicInfo;
 use cortex_m::{asm, interrupt};
 use sh::hio;
 
-#[panic_implementation]
+#[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     interrupt::disable();
 
