@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.5.0] - 2018-09-10
+
+- [breaking-change] The `panic_handler` feature gate has been removed. This
+  crate will compile on 1.30-beta and on stable 1.30 when they are released.
+
 ## [v0.4.0] - 2018-09-03
 
 ### Changed
@@ -35,7 +40,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial release
 
-[Unreleased]: https://github.com/rust-embedded/panic-semihosting/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/rust-embedded/panic-semihosting/compare/v0.5.0...HEAD
+[v0.5.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.1.0...v0.2.0

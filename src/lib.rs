@@ -48,7 +48,6 @@
 
 #![deny(missing_docs)]
 #![deny(warnings)]
-#![feature(panic_handler)]
 #![no_std]
 
 extern crate cortex_m;
