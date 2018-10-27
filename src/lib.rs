@@ -38,6 +38,16 @@
 //!
 //! # Optional features
 //!
+//! ## `exit`
+//!
+//! When this feature is enabled the panic handler performs an exit semihosting call after logging
+//! the panic message. This is useful when emulating the program on QEMU as it causes the QEMU
+//! process to exit with a non-zero exit code; thus it can be used to implement Cortex-M tests that
+//! run on the host.
+//!
+//! We discourage using this feature when the program will run on hardware as the exit call can
+//! leave the hardware debugger in an inconsistent state.
+//!
 //! ## `inline-asm`
 //!
 //! When this feature is enabled semihosting is implemented using inline assembly (`asm!`) and
@@ -56,7 +66,11 @@ extern crate cortex_m_semihosting as sh;
 use core::fmt::Write;
 use core::panic::PanicInfo;
 
-use cortex_m::{asm, interrupt};
+#[cfg(not(feature = "exit"))]
+use cortex_m::asm;
+use cortex_m::interrupt;
+#[cfg(feature = "exit")]
+use sh::debug::{self, EXIT_FAILURE};
 use sh::hio;
 
 #[panic_handler]
@@ -67,8 +81,15 @@ fn panic(info: &PanicInfo) -> ! {
         writeln!(hstdout, "{}", info).ok();
     }
 
-    // OK to fire a breakpoint here because we know the microcontroller is connected to a debugger
-    asm::bkpt();
+    match () {
+        // Exit the QEMU process
+        #[cfg(feature = "exit")]
+        () => debug::exit(EXIT_FAILURE),
+        // OK to fire a breakpoint here because we know the microcontroller is connected to a
+        // debugger
+        #[cfg(not(feature = "exit"))]
+        () => asm::bkpt(),
+    }
 
     loop {}
 }
