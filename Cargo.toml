@@ -5,7 +5,7 @@ authors = [
 ]
 categories = ["no-std"]
 description = "Report panic messages to the host stderr using semihosting"
-documentation = "https://rust-embedded.github.io/panic-semihosting/panic_semihosting"
+documentation = "https://docs.rs/panic-semihosting"
 keywords = ["panic-handler", "panic-impl", "panic", "semihosting"]
 license = "MIT OR Apache-2.0"
 name = "panic-semihosting"
