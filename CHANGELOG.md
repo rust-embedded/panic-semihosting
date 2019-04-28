@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.5.2] - 2019-04-28
+
+- Updated `cortex-m` version to not have the issue when linking multiple
+  versions of it.
+
 ## [v0.5.1] - 2018-10-27
 
 ### Added
@@ -47,7 +52,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial release
 
-[Unreleased]: https://github.com/rust-embedded/panic-semihosting/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/rust-embedded/panic-semihosting/compare/v0.5.2...HEAD
+[v0.5.2]: https://github.com/rust-embedded/panic-semihosting/compare/v0.5.1...v0.5.2
 [v0.5.1]: https://github.com/rust-embedded/panic-semihosting/compare/v0.5.0...v0.5.1
 [v0.5.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/rust-embedded/panic-semihosting/compare/v0.3.0...v0.4.0
