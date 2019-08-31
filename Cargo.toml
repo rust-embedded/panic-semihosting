@@ -14,8 +14,9 @@ version = "0.5.2"
 
 [dependencies]
 cortex-m = ">= 0.5.6, < 0.7"
-cortex-m-semihosting= "0.3.1"
+cortex-m-semihosting = "0.3"
 
 [features]
 exit = []
 inline-asm = ["cortex-m-semihosting/inline-asm", "cortex-m/inline-asm"]
+jlink-quirks = ["cortex-m-semihosting/jlink-quirks"]
