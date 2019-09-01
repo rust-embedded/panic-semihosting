@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Added feature `jlink-quirks` to work with JLink
+
 ## [v0.5.2] - 2019-04-28
 
 - Updated `cortex-m` version to not have the issue when linking multiple
